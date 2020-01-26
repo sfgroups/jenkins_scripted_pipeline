@@ -10,8 +10,16 @@ properties(
 node{
 
     stage('init'){
-        manager.createSummary("gear2.gif").appendText("<h2>Successfully deployed</h2>", false)
+     //   manager.createSummary("gear2.gif").appendText("<h2>Successfully deployed</h2>", false)
         sh 'printenv'
+    }
+
+    stage('Update status') {
+        def summary1 = createSummary(icon: "notepad.png", text: "started Builds:<br>")
+        summary1.appendText("myBuild1: SUCCESS<br>", false)
+        summary1.appendText("myBuild2: UNSTABLE<br>", false)
+
+        currentBuild.description = "<a href='http://stackoverflow.com'>Stackoverbuild build" + env.BUILD_ID + "</a>"
     }
 
 }
