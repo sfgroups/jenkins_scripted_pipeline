@@ -8,13 +8,14 @@ properties(
         ]
 )
 node{
-stages{
+
     stage('init'){
+        manager.createSummary("gear2.gif").appendText("<h2>Successfully deployed</h2>", false)
         sh 'printenv'
     }
 
 }
-}
+
 def developmentArtifactVersion = ''
 def releasedVersion = ''
 // get change log to be send over the mail
