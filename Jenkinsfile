@@ -9,6 +9,12 @@ properties(
 )
 node{
 
+    stage('postbuild display sfgroups link') {
+        String HTTP_URL= "www.sfgroups.com"
+        description = "<a href='${HTTP_URL}'</a>" + "sfgroups"
+        manager.addShortText(description, "black", "white", "1.5px", "white");
+    }
+
     stage('init'){
      //   manager.createSummary("gear2.gif").appendText("<h2>Successfully deployed</h2>", false)
         sh 'printenv'
